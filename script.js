@@ -1,9 +1,5 @@
 //ROCK-PAPER-SCISSORS
 
-// Create a function that returns a random computer option between rock-paper-scissors
-// Create a function that returns a player option between rock-paper-scissors
-//  make the function case sensitive
-// Create a function that plays a round of the game
 //  if computer option == player option
 //    print "I'ts a tie"
 //  if computer option is rock
@@ -22,15 +18,17 @@
 //    if player option is paper
 //      print computer wins
 
+// Create a function that returns a random computer option between rock-paper-scissors
 function computerPlay() {
   let options = ["rock", "paper", "scissors"];
   return options[Math.floor(Math.random() * options.length)];
 }
-
+// Create a function that returns a player option between rock-paper-scissors
 function playerPlay() {
   let playerOption = prompt("Rock-Paper-Scissors");
   console.clear();
-  playerOption = playerOption.toLowerCase();
+
+  playerOption = playerOption.toLowerCase(); //  make the function case sensitive
   if (
     playerOption != "rock" &&
     playerOption != "paper" &&
@@ -40,7 +38,7 @@ function playerPlay() {
     return null;
   } else return playerOption;
 }
-
+// Create a function that plays a round of the game
 function play(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) return "It's a tie";
   if (playerSelection == "rock") {
@@ -58,16 +56,19 @@ function play(playerSelection, computerSelection) {
   }
 }
 
+//Create a function that plays 5 rounds of the game
 function game() {
   let playerScore = 0;
   let computerScore = 0;
   for (let i = 0; i < 5; i++) {
     let playerSelection = playerPlay();
+    // if the player gives wrong input the round doesn't count
     if (playerSelection == null) {
       i--;
       continue;
     }
     let computerSelection = computerPlay();
+    // print the outcome of each round
     console.log("Round " + (i + 1));
     console.log("Your Selection: " + playerSelection);
     console.log("Computer Selection: " + computerSelection);
@@ -79,6 +80,8 @@ function game() {
     console.log("Player: " + playerScore);
     console.log("Computer: " + computerScore);
   }
+
+  // make a pop up message with the final results of the game
   if (playerScore == computerScore) {
     alert(
       "Final Results\n\n" + "It's a tie " + playerScore + " to " + computerScore
