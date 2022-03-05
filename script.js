@@ -1,42 +1,62 @@
 // Create a function that returns a random computer option between rock-paper-scissors
+
+let playerScore = 0;
+let computerScore = 0;
+
 function computerPlay() {
   let options = ["rock", "paper", "scissors"];
   return options[Math.floor(Math.random() * options.length)];
 }
 
-// Create a function that plays a round of the game
-
-function play(e, computerSelection) {
+function playRound(e, computerSelection) {
   computerSelection = computerPlay();
-  const results = document.querySelector(".results");
-  const para = document.createElement("p");
-
-  if (e.target.id == computerSelection) para.textContent = "It's a Tie";
-
-  if (e.target.id == "rock") {
-    if (computerSelection == "paper")
-      para.textContent = "You Lose! Paper beats Rock";
-    if (computerSelection == "scissors")
-      para.textContent = "You Win! Rock beats Scissors";
-  }
-  if (e.target.id == "paper") {
-    if (computerSelection == "scissors")
-      para.textContent = "You Lose! Scissors beats Paper";
-    if (computerSelection == "rock")
-      para.textContent = "You Win! Paper beats Rock";
-  }
-  if (e.target.id == "scissors") {
-    if (computerSelection == "rock")
-      para.textContent = "You Lose! Rock beats Scissors";
-    if (computerSelection == "paper")
-      para.textContent = "You Win! Scissors beats Paper";
-  }
-
-  if (results.hasChildNodes()) {
-    results.removeChild(results.firstChild);
-  }
-  results.appendChild(para);
+  if (e.target.id == computerSelection) return -1;
+  if (
+    (e.target.id == "rock" && computerSelection == "scissors") ||
+    (e.target.id == "paper" && computerSelection == "rock") ||
+    (e.target.id == "scissors" && computerSelection == "paper")
+  )
+    return 0;
+  if (
+    (e.target.id == "rock" && computerSelection == "paper") ||
+    (e.target.id == "paper" && computerSelection == "scissors") ||
+    (e.target.id == "scissors" && computerSelection == "rock")
+  )
+    return 1;
 }
 
+function showResults(e, playerScore, computerScore, computerSelection) {
+  let winner = playRound(e);
+  computerSelection = computerPlay();
+  const topText = document.querySelector("#first-text");
+  const bottomText = document.querySelector("#second-text");
+  const showPlayerSelection = document.querySelector("#player-selection");
+  const showPlayerScore = document.querySelector("#player-score");
+  const showComputerSelection = document.querySelector("#computer-selection");
+  const showComputerScore = document.querySelector("#computer-score");
+  showPlayerSelection.textContent = showPlayerIcon(e);
+  showComputerSelection.textContent = showComputerIcon(computerSelection);
+
+  if (winner == 0) {
+    playerScore++;
+    topText.textContent = "You Win!";
+    bottomText.textContent = `${e.target.id} beats ${computerSelection}!! `;
+  }
+}
+
+function showComputerIcon(computerSelection) {
+  if (computerSelection == "rock") return "✊";
+  if (computerSelection == "paper") return "✋";
+  if (computerSelection == "scissors") return "✌";
+}
+
+function showPlayerIcon(e) {
+  if (e.target.id == "rock") return "✊";
+  if (e.target.id == "paper") return "✋";
+  if (e.target.id == "scissors") return "✌";
+}
 const btn = document.querySelectorAll("button");
-btn.forEach((button) => button.addEventListener("click", play));
+
+btn.forEach((button) => button.addEventListener("click", playRound));
+btn.forEach((button) => button.addEventListener("click", showResults));
+btn.forEach((button) => button.addEventListener("click", showPlayerIcon));

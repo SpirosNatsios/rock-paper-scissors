@@ -1,0 +1,60 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  background-color: cadetblue;
+  padding: 38px;
+  font-size: 32px;
+  font-family: "Bungee Inline", serif;
+}
+
+body {
+  background-color: coral;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+button {
+  width: 165px;
+  height: 165px;
+  border-radius: 20px;
+  font-size: 100px;
+}
+
+.container,
+.score,
+.show-score,
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  padding: 42px;
+  flex-direction: column;
+  gap: 74px;
+}
+
+.results {
+  text-align: center;
+  font-size: 32px;
+}
+
+.score {
+  font-size: 32px;
+  gap: 100px;
+}
+.sings {
+  font-size: 100px;
+}
+.show-score {
+  flex-direction: column;
+}
+
+.buttons {
+  gap: 10px;
+}
