@@ -71,11 +71,11 @@ function main(e) {
 }
 
 function finalScreen() {
-  div.classList.add("container");
+  div.classList.add("final-screen");
   playAgainButton.classList.add("play-again");
   playAgainButton.textContent = "Play Again";
   resultText.style.cssText = "font-size:100px; font-weight:bold";
-  scoreText.style.cssText = "font-size:50px; font-weight:bold";
+  scoreText.style.cssText = "font-size:50px; ";
   if (playerScore == 5) {
     resultText.textContent = `You won!`;
     scoreText.textContent = `Player : ${playerScore} - Computer: ${computerScore}`;

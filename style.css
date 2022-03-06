@@ -1,14 +1,13 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   background-color: #eeedde;
-  display: flex;
-  flex-direction: column;
   width: auto;
-  font-family: "Lilita Hand";
+  font-family: "Calistoga";
 }
 
 button {
@@ -20,7 +19,7 @@ button {
   font-size: 90px;
   color: #eeedde;
   background-color: #141e27;
-  font-family: "Lilita One";
+  font-family: "Balsamiq Sans";
 }
 
 button:hover {
@@ -31,20 +30,17 @@ button:hover {
   display: flex;
   justify-content: center;
   background-color: #e0ddaa;
-  padding: 38px 0px;
+  padding: 20px 0px;
 }
 
 .title {
-  font-size: 48px;
+  font-size: 34px;
   font-family: "Bungee Inline", serif;
   color: #141e27;
   text-align: center;
-  height: 55px;
 }
 
-.container,
 .score,
-.show-score,
 .buttons {
   display: flex;
   justify-content: center;
@@ -52,8 +48,6 @@ button:hover {
 }
 .container {
   padding: 42px;
-  flex-direction: column;
-  gap: 64px;
 }
 
 #first-text {
@@ -61,7 +55,7 @@ button:hover {
   font-weight: bold;
 }
 #second-text {
-  font-size: 30px;
+  font-size: 28px;
 }
 .results {
   text-align: center;
@@ -71,17 +65,11 @@ button:hover {
   font-size: 32px;
   gap: 100px;
   text-align: center;
+  margin: 80px 0px;
 }
 .sings {
   font-size: 100px;
   height: 150px;
-}
-
-.show-score {
-  flex-direction: column;
-  flex-shrink: 1;
-  gap: 10px;
-  height: 300px;
 }
 
 .buttons {
@@ -93,4 +81,16 @@ button:hover {
   height: 60px;
   text-align: center;
   font-size: 20px;
+}
+.scores {
+  width: 200px;
+}
+
+.final-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 100px;
 }
