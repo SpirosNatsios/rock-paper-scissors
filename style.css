@@ -17,7 +17,7 @@ button {
   text-align: center;
   border-radius: 20px;
   border: 0px;
-  font-size: 110px;
+  font-size: 90px;
   color: #eeedde;
   background-color: #141e27;
   font-family: "Lilita One";
@@ -31,10 +31,13 @@ button:hover {
   display: flex;
   justify-content: center;
   background-color: #e0ddaa;
-  color: #141e27;
   padding: 38px 0px;
-  font-size: 24px;
+}
+
+.title {
+  font-size: 48px;
   font-family: "Bungee Inline", serif;
+  color: #141e27;
 }
 
 .container,
@@ -60,7 +63,6 @@ button:hover {
 }
 .results {
   text-align: center;
-  font-size: 32px;
 }
 
 .score {
@@ -69,6 +71,9 @@ button:hover {
 }
 .sings {
   font-size: 100px;
+}
+.icons {
+  font-size: 91px;
 }
 .show-score {
   flex-direction: column;

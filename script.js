@@ -25,6 +25,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function showResults(playerSelection, computerSelection, winner) {
+  showPlayerSelection.classList.add("icons");
+  showComputerSelection.classList.add("icons");
   showPlayerSelection.textContent = showPlayerIcon(playerSelection);
   showComputerSelection.textContent = showComputerIcon(computerSelection);
 
@@ -94,6 +96,8 @@ function finalScreen() {
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
+  showPlayerSelection.classList.remove("icons");
+  showComputerSelection.classList.remove("icons");
   topText.textContent = "Choose your Weapon";
   bottomText.textContent = "First to 5 points wins the game";
   showPlayerSelection.textContent = "?";
