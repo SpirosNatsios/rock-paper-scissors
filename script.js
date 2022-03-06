@@ -1,62 +1,123 @@
-// Create a function that returns a random computer option between rock-paper-scissors
-
 let playerScore = 0;
 let computerScore = 0;
 
 function computerPlay() {
-  let options = ["rock", "paper", "scissors"];
+  let options = ["Rock", "Paper", "Scissors"];
   return options[Math.floor(Math.random() * options.length)];
 }
 
-function playRound(e, computerSelection) {
-  computerSelection = computerPlay();
-  if (e.target.id == computerSelection) return -1;
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection == computerSelection) winner = -1;
   if (
-    (e.target.id == "rock" && computerSelection == "scissors") ||
-    (e.target.id == "paper" && computerSelection == "rock") ||
-    (e.target.id == "scissors" && computerSelection == "paper")
+    (playerSelection == "Rock" && computerSelection == "Scissors") ||
+    (playerSelection == "Paper" && computerSelection == "Rock") ||
+    (playerSelection == "Scissors" && computerSelection == "Paper")
   )
-    return 0;
+    winner = 0;
   if (
-    (e.target.id == "rock" && computerSelection == "paper") ||
-    (e.target.id == "paper" && computerSelection == "scissors") ||
-    (e.target.id == "scissors" && computerSelection == "rock")
+    (playerSelection == "Rock" && computerSelection == "Paper") ||
+    (playerSelection == "Paper" && computerSelection == "Scissors") ||
+    (playerSelection == "Scissors" && computerSelection == "Rock")
   )
-    return 1;
+    winner = 1;
+
+  showResults(playerSelection, computerSelection, winner);
 }
 
-function showResults(e, playerScore, computerScore, computerSelection) {
-  let winner = playRound(e);
-  computerSelection = computerPlay();
-  const topText = document.querySelector("#first-text");
-  const bottomText = document.querySelector("#second-text");
-  const showPlayerSelection = document.querySelector("#player-selection");
-  const showPlayerScore = document.querySelector("#player-score");
-  const showComputerSelection = document.querySelector("#computer-selection");
-  const showComputerScore = document.querySelector("#computer-score");
-  showPlayerSelection.textContent = showPlayerIcon(e);
+function showResults(playerSelection, computerSelection, winner) {
+  showPlayerSelection.textContent = showPlayerIcon(playerSelection);
   showComputerSelection.textContent = showComputerIcon(computerSelection);
 
-  if (winner == 0) {
-    playerScore++;
-    topText.textContent = "You Win!";
-    bottomText.textContent = `${e.target.id} beats ${computerSelection}!! `;
+  switch (winner) {
+    case 0:
+      playerScore++;
+      topText.textContent = "You Win!";
+      bottomText.textContent = `${playerSelection} beats ${computerSelection} `;
+      showPlayerScore.textContent = `Player: ${playerScore}`;
+      break;
+    case 1:
+      computerScore++;
+      topText.textContent = "You Lose!";
+      bottomText.textContent = `${playerSelection} loses to ${computerSelection}`;
+      showComputerScore.textContent = `Computer: ${computerScore}`;
+      break;
+    default:
+      topText.textContent = "It's a Tie";
+      bottomText.textContent = `${playerSelection} ties with ${computerSelection}`;
   }
 }
 
 function showComputerIcon(computerSelection) {
-  if (computerSelection == "rock") return "✊";
-  if (computerSelection == "paper") return "✋";
-  if (computerSelection == "scissors") return "✌";
+  if (computerSelection == "Rock") return "✊";
+  if (computerSelection == "Paper") return "✋";
+  if (computerSelection == "Scissors") return "✌";
 }
 
-function showPlayerIcon(e) {
-  if (e.target.id == "rock") return "✊";
-  if (e.target.id == "paper") return "✋";
-  if (e.target.id == "scissors") return "✌";
+function showPlayerIcon(playerSelection) {
+  if (playerSelection == "Rock") return "✊";
+  if (playerSelection == "Paper") return "✋";
+  if (playerSelection == "Scissors") return "✌";
 }
-const btn = document.querySelectorAll("button");
 
-btn.forEach((button) => button.addEventListener("click", playRound));
-btn.forEach((button) => button.addEventListener("click", showResults));
-btn.forEach((button) => button.addEventListener("click", showPlayerIcon));
+function main(e) {
+  let playerSelection = e.target.id;
+  let computerSelection = computerPlay();
+  playRound(playerSelection, computerSelection);
+  console.log(playerScore);
+  console.log(computerScore);
+  if (playerScore == 5 || computerScore == 5) {
+    finalScreen();
+  }
+}
+
+function finalScreen() {
+  div.classList.add("container");
+  playAgainButton.classList.add("play-again");
+  playAgainButton.textContent = "Play Again";
+  resultText.style.cssText = "font-size:100px; font-weight:bold";
+  scoreText.style.cssText = "font-size:50px; font-weight:bold";
+  if (playerScore == 5) {
+    resultText.textContent = `You won!`;
+    scoreText.textContent = `Player : ${playerScore} - Computer: ${computerScore}`;
+  } else if (computerScore == 5) {
+    resultText.textContent = `You lost!`;
+    scoreText.textContent = `Player : ${playerScore} - Computer: ${computerScore}`;
+  }
+  div.appendChild(resultText);
+  div.appendChild(scoreText);
+  div.appendChild(playAgainButton);
+  body.replaceChild(div, container);
+
+  playAgainButton.addEventListener("click", resetGame);
+}
+
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+  topText.textContent = "Choose your Weapon";
+  bottomText.textContent = "First to 5 points wins the game";
+  showPlayerSelection.textContent = "?";
+  showComputerSelection.textContent = "?";
+  showPlayerScore.textContent = "Player: 0";
+  showComputerScore.textContent = "Computer: 0";
+
+  body.replaceChild(container, div);
+}
+//playing screen
+const btn = document.querySelectorAll(".buttons");
+const topText = document.querySelector("#first-text");
+const bottomText = document.querySelector("#second-text");
+const showPlayerSelection = document.querySelector("#player-selection");
+const showPlayerScore = document.querySelector("#player-score");
+const showComputerSelection = document.querySelector("#computer-selection");
+const showComputerScore = document.querySelector("#computer-score");
+
+//final screen
+const body = document.querySelector("body");
+const container = document.querySelector(".container");
+const div = document.createElement("div");
+const resultText = document.createElement("p");
+const scoreText = document.createElement("p");
+const playAgainButton = document.createElement("button");
+
+btn.forEach((button) => button.addEventListener("click", main));

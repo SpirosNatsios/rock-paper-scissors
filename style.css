@@ -3,26 +3,38 @@
   margin: 0;
 }
 
-header {
-  text-align: center;
-  background-color: cadetblue;
-  padding: 38px;
-  font-size: 32px;
-  font-family: "Bungee Inline", serif;
-}
-
 body {
-  background-color: coral;
+  background-color: #eeedde;
   display: flex;
   flex-direction: column;
   width: auto;
+  font-family: "Lilita Hand";
 }
 
 button {
   width: 165px;
   height: 165px;
+  text-align: center;
   border-radius: 20px;
-  font-size: 100px;
+  border: 0px;
+  font-size: 110px;
+  color: #eeedde;
+  background-color: #141e27;
+  font-family: "Lilita One";
+}
+
+button:hover {
+  background-color: #274049;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: #e0ddaa;
+  color: #141e27;
+  padding: 38px 0px;
+  font-size: 24px;
+  font-family: "Bungee Inline", serif;
 }
 
 .container,
@@ -36,9 +48,16 @@ button {
 .container {
   padding: 42px;
   flex-direction: column;
-  gap: 74px;
+  gap: 64px;
 }
 
+#first-text {
+  font-size: 38px;
+  font-weight: bold;
+}
+#second-text {
+  font-size: 30px;
+}
 .results {
   text-align: center;
   font-size: 32px;
@@ -57,4 +76,11 @@ button {
 
 .buttons {
   gap: 10px;
+}
+
+.play-again {
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  font-size: 20px;
 }
