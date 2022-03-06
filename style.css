@@ -38,6 +38,8 @@ button:hover {
   font-size: 48px;
   font-family: "Bungee Inline", serif;
   color: #141e27;
+  text-align: center;
+  height: 55px;
 }
 
 .container,
@@ -68,15 +70,18 @@ button:hover {
 .score {
   font-size: 32px;
   gap: 100px;
+  text-align: center;
 }
 .sings {
   font-size: 100px;
+  height: 150px;
 }
-.icons {
-  font-size: 91px;
-}
+
 .show-score {
   flex-direction: column;
+  flex-shrink: 1;
+  gap: 10px;
+  height: 300px;
 }
 
 .buttons {
