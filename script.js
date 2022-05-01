@@ -104,7 +104,7 @@ function resetGame() {
   body.replaceChild(container, div);
 }
 //playing screen
-const btn = document.querySelectorAll(".buttons");
+const btn = document.querySelectorAll("button");
 const topText = document.querySelector("#first-text");
 const bottomText = document.querySelector("#second-text");
 const showPlayerSelection = document.querySelector("#player-selection");
